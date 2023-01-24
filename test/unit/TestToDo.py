@@ -25,6 +25,7 @@ class TestDatabaseFunctions(unittest.TestCase):
             message="Using or importing.*")
         """Create the mock database and table"""
         self.dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
+        self.dynamodberror = boto3.resource('dynamodb', region_name='us-west-1')
         self.is_local = 'true'
         self.uuid = "123e4567-e89b-12d3-a456-426614174000"
         self.text = "Aprender DevOps y Cloud en la UNIR"
@@ -78,7 +79,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         # Testing file functions
         from src.todoList import put_item
         # Table mock
-        self.assertRaises(Exception, put_item(None, None))
+        self.assertRaises(Exception, put_item("", self.dynamodberror))
  #       self.assertRaises(Exception, put_item("", self.dynamodb))
         print ('End: test_put_todo_error')
 
