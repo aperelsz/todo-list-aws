@@ -111,7 +111,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         from src.todoList import get_item
         self.assertRaises(Exception, get_item("", self.dynamodberror))     
         print('End: test_get_todo_error')
-        
+
     def test_list_todo(self):
         print ('---------------------')
         print ('Start: test_list_todo')
@@ -157,7 +157,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         updated_text = "Aprender más cosas que DevOps y Cloud en la UNIR"
         # Testing file functions
         # Table mock
-        responsePut = put_item(self.text, self.dynamodb)
+        responsePut = put_item(self.text, self.dynamodberror)
         print ('Response PutItem' + str(responsePut))
         self.assertRaises(
             Exception,
@@ -165,21 +165,21 @@ class TestDatabaseFunctions(unittest.TestCase):
                 updated_text,
                 "",
                 "false",
-                self.dynamodb))
+                self.dynamodberror))
         self.assertRaises(
             TypeError,
             update_item(
                 "",
                 self.uuid,
                 "false",
-                self.dynamodb))
+                self.dynamodberror))
         self.assertRaises(
             Exception,
             update_item(
                 updated_text,
                 self.uuid,
                 "",
-                self.dynamodb))
+                self.dynamodberror))
         print ('End: atest_update_todo_error')
 
     def test_delete_todo(self):
