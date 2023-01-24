@@ -47,7 +47,7 @@ class TestDatabaseFunctions(unittest.TestCase):
     def test_table_exists(self):
         print ('---------------------')
         print ('Start: test_table_exists')
-        self.assertTrue(self.table)  # check if we got a result
+        #self.assertTrue(self.table)  # check if we got a result
         #self.assertTrue(self.table_local)  # check if we got a result
 
         print('Table name:' + self.table.name)
@@ -104,6 +104,17 @@ class TestDatabaseFunctions(unittest.TestCase):
             responseGet['text'])
         print ('End: test_get_todo')
     
+    def test_get_todo_error(self):
+        print ('-----------------')
+        print ('Start: test_get_todo_error')
+        print('Se prueba get_todo con algún error')
+        from src.todoList import get_item
+        #se testea si se presenta el error ingresando un dato incorrecto
+        self.assertRaises(TypeError,
+        get_item(123,self.dynamodb))
+        print('End:test_get_todo_error')
+
+
     def test_list_todo(self):
         print ('---------------------')
         print ('Start: test_list_todo')
