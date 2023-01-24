@@ -111,8 +111,8 @@ class TestDatabaseFunctions(unittest.TestCase):
         from src.todoList import get_item
         #se testea si se presenta el error ingresando un dato incorrecto
         self.assertRaises(TypeError,
-        get_item(123,self.dynamodb))
-        print('End:test_get_todo_error')
+        get_item(None,self.dynamodb))
+        print('End: test_get_todo_error')
 
 
     def test_list_todo(self):
