@@ -35,7 +35,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         #self.table_local = create_todo_table()
         print ('End: setUp')
 
-    def test_get_table(self)
+    def test_get_table(self):
         print ('------------------')
         print ('Start:test_get_table')
         URL=os.environ("ENDPOINT_OVERRIDE")
