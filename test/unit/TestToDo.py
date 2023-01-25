@@ -106,6 +106,7 @@ class TestDatabaseFunctions(unittest.TestCase):
             responseGet['text'])
         print ('End: test_get_todo')
 
+
     def test_get_todo_error(self):
         print ('-----------------------')
         print ('Start test_get_todo_error')
