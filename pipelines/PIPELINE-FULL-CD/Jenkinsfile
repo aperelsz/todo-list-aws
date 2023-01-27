@@ -36,7 +36,13 @@ pipeline {
     post { 
         always { 
             echo 'Clean env: delete dir'
-            cleanWs()
+            cleanWs(
+                cleanWhenAborted: true,
+                cleanWhenFailure: true,
+                cleanWhenSuccess: true,
+                deleteDirs: true,
+                skipWhenFailed: true
+            )
         }
     }
 }
